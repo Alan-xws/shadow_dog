@@ -6,10 +6,12 @@ const playerImage = new Image();
 playerImage.src = 'player.png';
 const spriteWidth = 575;
 const spriteHeight = 523;
-let frameX = 0,frameY = 0;
+let frameX = 0,frameY = 3;
 let staggerframes = 5;
 let gameframe = 0;
 let actionLen = 10;
+let canvasTop = 500;
+let canvasLeft = 300;
 let action=[{name:"stand",frame:7},
             {name:"jump",frame:7},
             {name:"down",frame:7},
@@ -29,7 +31,7 @@ function animate(){
         frameX++;
         if(frameX == action[frameY].frame){
             frameX = 0;
-            frameY++;
+            // frameY++;
             if(frameY >= actionLen)frameY = 0;
         }
     }
@@ -37,3 +39,18 @@ function animate(){
     requestAnimationFrame(animate);
 };
 animate();
+let moveLen = 3;
+document.addEventListener('keydown', function(event) {
+    console.log('Key down:', event.key);
+    if(event.key == 'd'){
+        frameY = 3;
+        moveLen = 3;
+        canvasLeft += moveLen;
+        canvas.style.left = canvasLeft +"px";
+    }else if(event.key == ' '){
+        frameY = 6;
+        moveLen = 10;
+        canvasLeft += moveLen;
+        canvas.style.left = canvasLeft +"px";
+    }
+});
