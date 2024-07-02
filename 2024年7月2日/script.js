@@ -45,11 +45,13 @@ document.addEventListener('keydown', function(event) {
     if(event.key == 'd'){
         frameY = 3;
         moveLen = 3;
+        staggerframes = 4;
         canvasLeft += moveLen;
         canvas.style.left = canvasLeft +"px";
     }else if(event.key == ' '){
         frameY = 6;
         moveLen = 10;
+        staggerframes = 3;
         canvasLeft += moveLen;
         canvas.style.left = canvasLeft +"px";
     }
